@@ -75,7 +75,16 @@ func main() {
 
 			selection := rand.Intn(len(dwarvenVows))
 
-			s.ChannelMessageSend(m.ChannelID, dwarvenVows[selection])
+			// author := discordgo.MessageEmbedAuthor{
+			// 	Name: "Dirk",
+			// }
+
+			embed := discordgo.MessageEmbed{
+				Title: dwarvenVows[selection],
+				//Author: &author,
+			}
+
+			s.ChannelMessageSendEmbed(m.ChannelID, &embed)
 		}
 	})
 
