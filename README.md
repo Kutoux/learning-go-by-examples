@@ -1,2 +1,2 @@
 # learning-go-by-examples
-Practicing Go
+Practicing Go following different tutorials.
