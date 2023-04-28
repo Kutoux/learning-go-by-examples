@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"log"
 	"math/rand"
@@ -11,24 +10,19 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/joho/godotenv"
 )
 
 // subcommands for prefix
 // const prefix string = "!gobot"
 const vow string = "!vow"
 
-// Variables used for command line parameters
-var (
-	Token string
-)
-
-func init() {
-	flag.StringVar(&Token, "t", "", "Bot Token")
-	flag.Parse()
-}
-
 func main() {
-	sess, err := discordgo.New("Bot " + Token)
+	godotenv.Load()
+
+	token := os.Getenv("BOT_TOKEN")
+
+	sess, err := discordgo.New("Bot " + token)
 
 	if err != nil {
 		log.Fatal(err)
