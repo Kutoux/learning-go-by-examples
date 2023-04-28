@@ -14,8 +14,7 @@ import (
 )
 
 // subcommands for prefix
-// const prefix string = "!gobot"
-const vow string = "!vow"
+const prefix string = "!gobot"
 
 func main() {
 	godotenv.Load()
@@ -36,16 +35,15 @@ func main() {
 		args := strings.Split(m.Content, " ")
 
 		//if message doesn't start with prefix command, ignore
-		if args[0] != vow {
+		if args[0] != prefix {
 			return
 		}
 
-		// if args[1] == "hello" {
-		// 	s.ChannelMessageSend(m.ChannelID, "world!")
-		// }
+		if args[1] == "hello" {
+			s.ChannelMessageSend(m.ChannelID, "world!")
+		}
 
-		//if args[1] == "dwarven" && args[2] == "vow" {
-		if args[0] == vow {
+		if args[1] == "dwarven" && args[2] == "vow" {
 			dwarvenVows := []string{
 				"Dwarven Vow #1: Let's all work together for a peaceful world.",
 				"Dwarven Vow #2: Never abandon someone in need.",
@@ -71,13 +69,13 @@ func main() {
 
 			selection := rand.Intn(len(dwarvenVows))
 
-			// author := discordgo.MessageEmbedAuthor{
-			// 	Name: "Dirk",
-			// }
+			author := discordgo.MessageEmbedAuthor{
+				Name: "Lloyd Irving",
+			}
 
 			embed := discordgo.MessageEmbed{
-				Title: dwarvenVows[selection],
-				//Author: &author,
+				Title:  dwarvenVows[selection],
+				Author: &author,
 			}
 
 			s.ChannelMessageSendEmbed(m.ChannelID, &embed)
