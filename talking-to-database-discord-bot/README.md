@@ -1,0 +1,1 @@
+Connects to a SQL database and can record and fetch answers from questions that are DMed to a user with the command '!gobot prompt'
